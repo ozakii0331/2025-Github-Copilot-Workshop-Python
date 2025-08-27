@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ポモドーロタイマー</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header-row">
+            <span class="title">ポモドーロタイマー</span>
+            <span class="window-btns">ー □ ×</span>
+        </div>
+        <div class="state-label" id="state-label">作業中</div>
+        <div class="circle-timer">
+            <svg width="180" height="180">
+                <circle cx="90" cy="90" r="80" stroke="#e5e6f0" stroke-width="14" fill="none" />
+                <circle id="progress-circle" cx="90" cy="90" r="80" stroke="#7b7ee6" stroke-width="14" fill="none" stroke-linecap="round" transform="rotate(-90 90 90)" />
+            </svg>
+            <div class="timer-center">
+                <span id="timer-display" class="timer-display">25:00</span>
+            </div>
+        </div>
+        <div class="button-group">
+            <button id="start-btn" class="main-btn">開始</button>
+            <button id="reset-btn" class="sub-btn">リセット</button>
+        </div>
+        <form id="settings-form" class="settings-box">
+            <div class="settings-title">設定</div>
+            <div class="settings-row">
+                <label>作業時間
+                    <input type="number" id="work-minutes" min="1" max="90" value="25"> 分
+                </label>
+            </div>
+            <div class="settings-row">
+                <label>短い休憩
+                    <input type="number" id="short-break-minutes" min="1" max="30" value="5"> 分
+                </label>
+            </div>
+            <div class="settings-row">
+                <label>長い休憩
+                    <input type="number" id="long-break-minutes" min="1" max="60" value="15"> 分
+                </label>
+            </div>
+            <div class="settings-row">
+                <label>1サイクル回数
+                    <input type="number" id="cycle-count" min="1" max="10" value="4"> 回
+                </label>
+            </div>
+            <div class="settings-btn-row">
+                <button type="submit" class="main-btn settings-save-btn">保存</button>
+                <button type="button" id="settings-reset-btn" class="sub-btn">リセット</button>
+            </div>
+        </form>
+        <div class="progress-box">
+            <div class="progress-title">今日の進捗</div>
+            <div class="progress-row">
+                <div class="progress-item">
+                    <div id="pomodoro-count" class="progress-value">0</div>
+                    <div class="progress-label">完了</div>
+                </div>
+                <div class="progress-item">
+                    <div id="focus-time" class="progress-value">0分</div>
+                    <div class="progress-label">集中時間</div>
+                </div>
+            </div>
+        </div>
+        <div class="history-box">
+            <div class="history-title">履歴</div>
+            <ul id="history-list" class="history-list"></ul>
+        </div>
+    </div>
+    <script src="/static/js/timer.js"></script>
+</body>
+</html>
